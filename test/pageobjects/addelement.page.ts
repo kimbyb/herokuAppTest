@@ -15,22 +15,25 @@ class AddElementPage extends Page {
 
     public get deleteButton () {
        // return $('[onclick="deleteElement()"]');
-       return $$('[data-testid="delete-button"]')
+       return $$('//*[@id="elements"]/button')
     }
 
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
      */
+
+    // has a random number of the click elements 
     public async clickAdd () {
         let random : number =  Math.floor(Math.random() * 6) + 1
         for (let i = 0; i < random; i++) {
             console.log(i)
-            this.addButton.click()
+            await this.addButton.click()
             console.log("clicked")
        }
     }
 
+    //deletes the elements without the number knowledge 
     public async clickDelete() {
         const parentElement = await $("#elements");
       //  const children = await parentElement.$$('button')
