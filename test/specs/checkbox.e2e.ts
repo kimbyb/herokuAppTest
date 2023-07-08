@@ -2,7 +2,7 @@ import CheckboxPage from '../pageobjects/checkboxes.page.js'
 import SecurePage from '../pageobjects/secure.page.js'
 
 describe('My Login application', () => {
-    it('should login with valid credentials', async () => {
+    it('should check all the boxes', async () => {
         await CheckboxPage.open()
 
         await CheckboxPage.clickCheckbox
