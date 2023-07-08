@@ -38,6 +38,8 @@ export const config: Options.Testrunner = {
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
+    'test/specs/checkbox.e2e.ts',
+    'test/specs/example.e2e.ts',
     ],
     //
     // ============

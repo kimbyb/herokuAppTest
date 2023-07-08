@@ -14,7 +14,8 @@ class AddElementPage extends Page {
     }
 
     public get deleteButton () {
-        return $('[onclick="deleteElement()"]');
+       // return $('[onclick="deleteElement()"]');
+       return $('button.added-manually[onclick="deleteElement()"]')
     }
 
     /**
@@ -23,16 +24,22 @@ class AddElementPage extends Page {
      */
     public async clickAdd () {
        for (let i = 0; i < Math.floor(Math.random() * 6) + 1; i++) {
+        console.log(i)
             this.addButton.click()
             console.log("clicked")
        }
     }
 
     public async clickDelete() {
-        const finalButtonCount = $$('#elements button').length;
-        for (let i = 0; i < await finalButtonCount; i++) {
-            this.deleteButton.click();
-          }
+        // const  finalButtonCount = await $('#elements').length;
+        // console.log(finalButtonCount)
+        // console.log('im here')
+        // for (let i = 0; i <  finalButtonCount; i++) {
+        //     this.deleteButton.click();
+        //   }
+        if ((await this.deleteButton).isExisting) {
+            (await this.deleteButton).click
+        }
     }
  
 
