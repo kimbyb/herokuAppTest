@@ -13,8 +13,8 @@ class AddElementPage extends Page {
         return $("#content > div > button");
     }
 
-    public get parentButton () {
-        return $('#elements')
+    public get deleteButton () {
+        return $('[onclick="deleteElement()"]');
     }
 
     /**
@@ -23,17 +23,16 @@ class AddElementPage extends Page {
      */
     public async clickAdd () {
        for (let i = 0; i < Math.floor(Math.random() * 6) + 1; i++) {
-            await this.addButton.click()
+            this.addButton.click()
+            console.log("clicked")
        }
     }
 
     public async clickDelete() {
-        const children = document.querySelectorAll("#elements > button");
-
-        children.forEach((button) => {
-            const btn = button as HTMLButtonElement;
-            btn.click()       
-        });
+        const finalButtonCount = $$('#elements button').length;
+        for (let i = 0; i < await finalButtonCount; i++) {
+            this.deleteButton.click();
+          }
     }
  
 
