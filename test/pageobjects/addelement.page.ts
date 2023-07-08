@@ -15,7 +15,7 @@ class AddElementPage extends Page {
 
     public get deleteButton () {
        // return $('[onclick="deleteElement()"]');
-       return $('button.added-manually[onclick="deleteElement()"]')
+       return $$('[data-testid="delete-button"]')
     }
 
     /**
@@ -23,23 +23,23 @@ class AddElementPage extends Page {
      * e.g. to login using username and password
      */
     public async clickAdd () {
-       for (let i = 0; i < Math.floor(Math.random() * 6) + 1; i++) {
-        console.log(i)
+        let random : number =  Math.floor(Math.random() * 6) + 1
+        for (let i = 0; i < random; i++) {
+            console.log(i)
             this.addButton.click()
             console.log("clicked")
        }
     }
 
     public async clickDelete() {
-        // const  finalButtonCount = await $('#elements').length;
-        // console.log(finalButtonCount)
-        // console.log('im here')
-        // for (let i = 0; i <  finalButtonCount; i++) {
-        //     this.deleteButton.click();
-        //   }
-        if ((await this.deleteButton).isExisting) {
-            (await this.deleteButton).click
-        }
+        const parentElement = await $("#elements");
+      //  const children = await parentElement.$$('button')
+      const children = await $$('//*[@id="elements"]/button')
+        for (let i = 0; i < children.length ; i++) {
+            console.log('length ' + children.length);
+            await children[i].click();
+            browser.pause(100)
+        }       
     }
  
 
