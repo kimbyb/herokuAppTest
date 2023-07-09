@@ -3,11 +3,15 @@ import SecurePage from '../pageobjects/secure.page.js'
 
 describe('Adding elements', () => {
     let elementAdded: boolean;
-    it('should click add element', async () => {
+    it('add element is present and should click add element', async () => {
         await AddElementPage.open();
+
+        await expect(AddElementPage.addButton).toBeExisting()
+
         await AddElementPage.clickAdd();
         await expect(AddElementPage.deleteButton).toBeExisting();
         elementAdded = true;
+
     });
 
     it('should delete elements', async () => {
